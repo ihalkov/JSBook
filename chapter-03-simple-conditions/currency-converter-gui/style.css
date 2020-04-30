@@ -1,0 +1,55 @@
+body {
+    background-color: #fff;
+  }
+  
+  main {
+    margin: 200px auto;
+    height: 250px;
+    width: 500px;
+    background-color: #e7e7e7;
+    border: 1px solid black;
+    border-radius: 20px;
+    box-shadow: 3px 3px 3px gray;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #000;
+    text-shadow: 1px 1px 1px #000;
+  }
+  
+  form {
+    width: 400px;
+    margin:20px auto;
+    text-align: center;
+  }
+  
+  span {  /* when text is hooked with span, you can stile it with CSS and manipulate it with JS */
+    font-weight:bold;
+    font-size: 16px;
+  }
+  
+  input[type=number], input[type=text], select {  /* here is selecting inputs and select tag */
+      width: 140px;
+      padding: 8px 10px;
+      margin: 20px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-sizing: border-box;
+      outline: none;
+      text-align: center
+  }
+   input[type=text] { /* here is changing only inputs of type text */
+     width: 80%;
+     margin-top:20px;
+     background-color: #7beb80;
+     padding: 12px 10px;
+     color:black;
+     font-weight: bold;
+     font-size: 15px;
+   }
+  
+   input:focus {
+     border: 2px solid #26a5e0;
+   }

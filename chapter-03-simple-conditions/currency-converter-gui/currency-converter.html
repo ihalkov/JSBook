@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Currency Converter</title>
+  <script src="convert.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="converter-window"> <!-- window with functionality -->
+    <h1>Currency Converter</h1> <!-- heading -->
+    <form name="converter">
+      <input type="number" placeholder="Enter number" min="0" 
+      id="cash-input" onkeyup="convert()" onchange="convert()"> <!-- input calling JS functionality -->
+      <span>BGN &#8594; </span>
+      <select onchange="convert()" id="currency-options"> <!-- control for set of options motions -->
+        <option selected disabled>Select currency</option>  <!-- disabled elements -->
+        <option value="eur">EUR</option>  <!-- options putted in select -->
+        <option value="usd">USD</option>
+        <option value="gbp">GBP</option>
+      </select>
+      <br />
+      <input type="text" name="result" id="result" disabled> <!-- disabled input element you can only receive result on it -->
+    </form>
+  </main>
+</body>
+</html>
