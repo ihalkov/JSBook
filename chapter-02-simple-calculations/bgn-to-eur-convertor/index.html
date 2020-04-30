@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>BGN to EUR Converter</title>
+    <script src="converter.js" type="text/javascript"></script> <!-- access to JS file -->
+    <link rel="stylesheet" href="index.css" type="text/css" />  <!-- access to CSS file -->
+</head>
+<body>
+    <form class="content-form"> <!-- collection of form-associated elements -->
+        <h2 class="title">BGN to EUR Converter</h2> <!-- the heading of the web app -->
+        <section class="items"> <!-- section with the app itself -->
+            <label for="bgn" class="currency">
+                <span class="item-currency">BGN: </span> <!-- label to the input, class will be used in css file -->
+                <input class="currency-value" type="number" id="bgn" value="0" /> <!-- the box for bgn currency, id will be used in JS logic -->
+            </label>
+            <label for="euro" class="currency">
+                <span class="item-currency">EUR: </span> <!-- label to the input, class will be used in css file -->
+                <input class="currency-value" type="text" id="euro" readonly /> <!-- the box for eur currency, id will be used in JS logic -->
+            </label>
+            <input class="primary-btn" type="button" onclick="eurConverter()" value="Convert!" /> <!-- input of type button onclick is calling the JS function -->
+        </section>
+    </form>
+</body>
+</html>
