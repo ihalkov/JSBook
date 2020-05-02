@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TurtleGraphics - Demo</title>
+        <link rel="stylesheet" href="text/css" href="lib/style.css">
+    </head>
+
+    <body>
+        <div id="main-frame">
+            <div id="header">
+                <img id="small-icon" class="title-box" src="lib/turtle-icon.png" alt="icon" />
+                <span class="title-box">TurtleGraphics - Demo</span>
+            </div>
+            <div id="elements">
+                <button id="justDraw">Draw</button>
+                <button id="reset">Reset</button>
+                <button id="hide">Hide Turtle</button>
+                <button id="drawHexagon">Hexagon</button>
+                <button id="drawStar">Star</button>
+                <button id="drawSpiral">Spiral</button>
+                <button id="drawSun">Sun</button>
+                <button id="drawTriangle">Triangle</button>
+                <!--<div id="turtle">-->
+                    <img id="turtle" class="title-box" src="lib/turtle-icon.png" alt="icon" />
+                <!--</div>-->
+            </div>
+        </div>
+        <script src="lib/jquery.js"></script>
+        <script src="lib/jquery-turtle.js"></script>
+        <script>
+            eval($.turtle());
+            $('#turtle').css('turtleScale', '2').css('turtleSpeed', '4').home();
+
+            
+
+            $('#justDraw').click(function() {
+                cg();
+                for (let index = 0; index < 4; index++) {
+                    $('#turtle').pen('green', '5')
+                    .lt(30).fd(150)
+                    .lt(120).fd(150)
+                    .lt(120).fd(150);
+                }
+            });
+
+            $('#reset').click(function() {
+                window.location.reload();
+            });
+
+            $('#hide').click(function() {
+                $('#turtle').toggle();
+                $(this).text(function(i, text) {
+                    return text === "Hide turtle" ? "Show Turtle" : "Hide Turtle";
+                });
+            });
+
+            function resetCanvas() {
+                cg();
+                home();
+                $('#turtle').css('turtleSpeed', '4');
+            }
+
+            $('#drawSpiral').click(function() {
+                resetCanvas();
+                $('#turtle').pen('red', '3').css('turtleSpeed', '10')
+                let increaser = 5;
+                for (let index = 1; index <= 6; index++) {
+
+                    for (let index = 1; index <= 6; index++) {
+                        $('#turtle').lt(60).fd(increaser);
+                        increaser += 5;
+                    }
+                }
+            });
+
+            $('#drawHexagon').click(function() {
+                resetCanvas();
+                $('#turtle').pen('blue', '3').css('turtleSpeed', '4')
+                    for (let index = 1; index <= 6; index++) {
+                        $('#turtle').lt(60).fd(90);
+                    }
+            });
+
+            $('#drawStar').click(function() {
+                resetCanvas();
+                $('#turtle').pen('yellow', '3').css('turtleSpeed', '4')
+                    for (let index = 1; index <= 5; index++) {
+                        $('#turtle').lt(144).fd(180);
+                    }
+            });
+
+            $('#drawSun').click(function() {
+                resetCanvas();
+                $('#turtle').pen('orange', '3').css('turtleSpeed', '4')
+                    for (let index = 1; index <= 36; index++) {
+                        $('#turtle').lt(170).fd(200);
+                    }
+            });
+
+            $('#drawTriangle').click(function() {
+                resetCanvas();
+                $('#turtle').pen('red', '3').css('turtleSpeed', '10')
+                
+                for (let index = 1; index <= 3; index++) {
+                    let increaser = 10;
+                    for (let index = 1; index <= 6; index++) {
+                    for (let index = 1; index <= 3; index++) {
+                        $('#turtle').lt(120).fd(increaser);
+                        increaser += 10;
+                    }
+                }
+                $('#turtle').lt(120).fd(increaser);
+                $('#turtle').lt(120);
+                }
+            });
+        </script>
+    </body>
+</html>
