@@ -8,6 +8,43 @@ function bullsAndCows([arg1, arg2, arg3]) {
     let output = "";
     let solutionFound = false;
 
+    function setCharAt(str,index,chr) {
+        if(index > str.length-1) {
+            return str;
+        }
+        return str.slice(0,index) + chr + str.slice(index+1);
+    }
+
+    function calcBullsCows(tempGuess, tempSecret) {
+        let args = [0, 0];
+        for (let i = 0; i < tempSecret.length; i++) {
+            if (tempSecret[i] === tempGuess[i]) {
+                tempGuess = setCharAt(tempGuess, i, "0");
+                tempSecret = setCharAt(tempSecret, i, "0");
+                args[0]++;
+                continue;
+            }
+        }
+        for (let i = 0; i < tempSecret.length; i++) {
+            if (tempSecret[i] === tempGuess[i] || tempSecret[i] === "0") {
+                continue;
+            }
+            let counter = 0;
+            for (let j = 0; j < tempGuess.length; j++) {
+                if (counter > 0) {
+                    break;
+                }
+                if (tempSecret[i] === tempGuess[j] && i !== j) {
+                    tempGuess = setCharAt(tempGuess, j, "0");
+                    args[1]++;
+                    counter++;
+                }
+            }
+        }
+
+        return args;
+    }
+
     for (let d1 = 1; d1 <= 9; d1++) {
         for (let d2 = 1; d2 <= 9; d2++) {
             for (let d3 = 1; d3 <= 9; d3++) {
@@ -18,43 +55,6 @@ function bullsAndCows([arg1, arg2, arg3]) {
                     guessNum = `${d1}${d2}${d3}${d4}`;
                     let tempGuess = guessNum;
                     let tempSecret = secretNum;
-
-                    function setCharAt(str,index,chr) {
-                        if(index > str.length-1) return str;
-                        return str.slice(0,index) + chr + str.slice(index+1);
-                    }
-
-                    function calcBullsCows(tempGuess, tempSecret) {
-                        let args = [0, 0];
-                        for (let i = 0; i < tempSecret.length; i++) {
-                            if (tempSecret[i] === tempGuess[i]) {
-                                tempGuess = setCharAt(tempGuess, i, "0");
-                                tempSecret = setCharAt(tempSecret, i, "0");
-                                args[0]++;
-                                continue;
-                            }
-                        }
-                        
-                        for (let i = 0; i < tempSecret.length; i++) {
-                            if (tempSecret[i] === tempGuess[i] || tempSecret[i] === "0") {
-                                continue;
-                            }
-                            let counter = 0;
-                            for (let j = 0; j < tempGuess.length; j++) {
-                                if (counter > 0) {
-                                    break;
-                                }
-                                if (tempSecret[i] === tempGuess[j] && i !== j) {
-                                    tempGuess = setCharAt(tempGuess, j, "0");
-                                    args[1]++;
-                                    counter++;
-                                }
-                            }
-                        }
-
-                        return args;
-                    }
-
                     let array = calcBullsCows(tempGuess, tempSecret);
                     b = parseInt(array[0]);
                     c = parseInt(array[1]);
@@ -67,7 +67,6 @@ function bullsAndCows([arg1, arg2, arg3]) {
             }
         }
     }
-    
     if (!solutionFound) {
         output = "No";
     }
