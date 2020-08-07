@@ -68,7 +68,7 @@ function xExpression([expression]) {
                     break;
             }
         } else if (symbol === "+" || symbol === "-"
-            || symbol === "/" || symbol === "*") {
+                || symbol === "/" || symbol === "*") {
             expressionOperator = symbol;
         }
         index += 1;

@@ -17,30 +17,41 @@ function bullsAndCows([arg1, arg2, arg3]) {
 
     function calcBullsCows(tempGuess, tempSecret) {
         let args = [0, 0];
-        for (let i = 0; i < tempSecret.length; i++) {
-            if (tempSecret[i] === tempGuess[i]) {
-                tempGuess = setCharAt(tempGuess, i, "0");
-                tempSecret = setCharAt(tempSecret, i, "0");
-                args[0]++;
-                continue;
-            }
-        }
-        for (let i = 0; i < tempSecret.length; i++) {
-            if (tempSecret[i] === tempGuess[i] || tempSecret[i] === "0") {
-                continue;
-            }
-            let counter = 0;
-            for (let j = 0; j < tempGuess.length; j++) {
-                if (counter > 0) {
-                    break;
-                }
-                if (tempSecret[i] === tempGuess[j] && i !== j) {
-                    tempGuess = setCharAt(tempGuess, j, "0");
-                    args[1]++;
-                    counter++;
+
+        function getBulls() {
+            for (let i = 0; i < tempSecret.length; i++) {
+                if (tempSecret[i] === tempGuess[i]) {
+                    tempGuess = setCharAt(tempGuess, i, "0");
+                    tempSecret = setCharAt(tempSecret, i, "0");
+                    args[0]++;
+                    continue;
                 }
             }
+            return args[0];
         }
+
+        function getCows() {
+            for (let i = 0; i < tempSecret.length; i++) {
+                if (tempSecret[i] === tempGuess[i] || tempSecret[i] === "0") {
+                    continue;
+                }
+                let counter = 0;
+                for (let j = 0; j < tempGuess.length; j++) {
+                    if (counter > 0) {
+                        break;
+                    }
+                    if (tempSecret[i] === tempGuess[j] && i !== j) {
+                        tempGuess = setCharAt(tempGuess, j, "0");
+                        args[1]++;
+                        counter++;
+                    }
+                }
+            }
+            return args[1];
+        }
+
+        getBulls();
+        getCows();
 
         return args;
     }
